@@ -6,13 +6,13 @@
     background-image: url("alexis-antoine-1450993-unsplash (1).jpg");
     height: 800px;
     background-size: cover;
-    text-align: center
+    text-align: center;
+    position: relative;
   }
 
   .home-container h1 {
     opacity: 0.7;
     font-size: 45px;
-    letter-spacing: 5px;
     padding-top: 40px;
   }
 
@@ -24,3 +24,11 @@
   .home-container h5{
       text-align-last: left;
   }
+
+
+.style{
+  position: absolute;
+  bottom:-170px;
+  right: 20px;
+  color:white;
+}

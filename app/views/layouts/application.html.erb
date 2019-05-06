@@ -21,5 +21,8 @@
             <% end %>
         </div>
     <%= yield %>
+    <% unless request.path_info == root_path %>
+        <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>
