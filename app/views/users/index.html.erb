@@ -1,0 +1,11 @@
+<div class="container">
+    <% @users.each do |user| %>
+        <div class="card m-4" style="width: 15rem;">
+            <%= image_tag user.picture.to_s, size: 120, class: "card-img-top"%>
+            <div class="card-body">
+                <h5 class="card-title text-center"><%= link_to user.name, user %></h5>
+                <p class="card-text text-center"><%= user.email %></p>
+            </div>
+        </div>
+    <% end %>
+</div>
