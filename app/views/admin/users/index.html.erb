@@ -6,10 +6,12 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><%= link_to user.name, user %></h5>
                 <p class="card-text text-center"><%= user.email %></p>
-                <% if user.admin == false %>
-                    <%= button_to "Set admin", admin_user_path(user),method: :patch, class: 'btn btn-primary btn-block' %>
-                <% else %>
-                    <%= button_to "Remove admin", admin_user_path(user),method: :delete, class: "btn btn-danger btn-block" %>
+                <% if current_user.admin == true %>
+                    <% if user.admin == false %>
+                        <%= button_to "Set admin", admin_user_path(user),method: :patch, class: 'btn btn-primary btn-block' %>
+                    <% else %>
+                        <%= button_to "Remove admin", admin_user_path(user),method: :delete, class: "btn btn-danger btn-block" %>
+                    <% end %>
                 <% end %>
             </div>
         </div>
