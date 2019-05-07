@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <%= link_to 'Elearning', root_path, class: "navbar-brand h1 text-muted" %>
+        <%= link_to 'tabikichi', root_path, class: "navbar-brand h1 text-muted" %>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
             </ul>
@@ -14,12 +14,16 @@
                     </li>
                     <li class="nav-item">
                         <%= link_to 'User', "#", class: 'nav-link' %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to current_user.name, "#", class: 'nav-link' %>
-                    </li>
-                    <li>
-                    <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
+                    </li>                  
+                    <li class="navbar-nav nav-item dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%= current_user.name %>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <%= link_to 'Profile', current_user, class: 'dropdown-item' %>
+                            <%= link_to 'Settings', edit_user_path(current_user), class: 'dropdown-item' %>
+                            <%= link_to 'Log out', logout_path,method: :delete, class: 'dropdown-item' %>
+                        </div>
                     </li>
                 <% else %>
                     <li class="nav-item">

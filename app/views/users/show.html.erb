@@ -1,1 +1,31 @@
-test
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-4" style="width: 18rem;">
+            <div class="card">
+                <div class="card-body text-center">
+                    <%= image_tag current_user.picture.to_s, size: 200 %>
+                    <h3 class="card-title text-center"><%= current_user.name %></h3>
+                    <p class="card-text text-center"><%= current_user.email %></p> <hr>
+                    <div class="row">
+                        <div class="col">
+                            <h4><%= link_to 0, '#' %></h4>
+                            <small>Following</small>
+                        </div>
+                        <div class="col">
+                            <h4><%= link_to 0, '#' %></h4>
+                            <small>Follower</small>
+                        </div>
+                        <div class="col">
+                            <h4><%= link_to 0, '#' %></h4>
+                            <small>Lessons</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-8">
+        <h2 class="text-center">Lessons<hr></h2>
+        </div>
+    </div>
+</div>
