@@ -12,3 +12,12 @@ User.create!(
   password: "password",
   admin: true
 )
+
+50.times do |n|
+  User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.unique.email,
+    password: "password",
+    admin: false
+  )
+end
