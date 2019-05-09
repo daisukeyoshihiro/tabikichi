@@ -21,3 +21,14 @@ User.create!(
     admin: false
   )
 end
+
+user = User.first
+followers = User.all
+
+followers[2..50].each do |follower|
+    follower.follow(user)
+end
+
+followers[40..50].each do |follower|
+    user.follow(follower)
+end

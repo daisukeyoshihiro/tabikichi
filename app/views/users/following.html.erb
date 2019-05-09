@@ -1,0 +1,15 @@
+<h2 class="text-center text-muted">Following</h2> <hr>
+<div class="container">
+    <div class="pagination justify-content-center m-3"><%= will_paginate %></div>
+    <div class="row">
+        <% @users.each do |user| %>
+            <div class="card m-3 text-center" style="width: 15rem;">
+                <span><%= image_tag user.picture.to_s, size: 120 %></span>
+                <div class="card-body">
+                    <h5 class="card-title"><%= link_to user.name, user %></h5>
+                    <p class="card-text"><%= user.email %></p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

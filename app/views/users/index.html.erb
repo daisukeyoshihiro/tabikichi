@@ -1,7 +1,7 @@
 <h1 class="text-center">Users</h1><hr>
 <div class="container">
+    <div class="pagination justify-content-center m-3"><%= will_paginate %></div>
     <div class="row">
-        <%#= will_paginate %>
         <% @users.each do |user| %>
             <div class="card m-3 text-center" style="width: 15rem;">
                 <div><%= image_tag user.picture.to_s, size: 120 %></div>

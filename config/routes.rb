@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   end
   
   root 'staticpages#home'
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   get '/login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
