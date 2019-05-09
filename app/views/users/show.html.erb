@@ -3,23 +3,26 @@
         <div class="col-4" style="width: 18rem;">
             <div class="card">
                 <div class="card-body text-center">
-                    <%= image_tag current_user.picture.to_s, class: "card-img-top" %>
-                    <h3 class="card-title text-center"><%= current_user.name %></h3>
-                    <p class="card-text text-center"><%= current_user.email %></p> <hr>
+                    <%= image_tag @user.picture.to_s, class: "card-img-top" %>
+                    <h3 class="card-title text-center"><%= @user.name %></h3>
+                    <p class="card-text text-center"><%= @user.email %></p> <hr>
                     <div class="row">
                         <div class="col">
-                            <h4><%= link_to 0, '#' %></h4>
+                            <h4><%= link_to @user.active_relationships.count, following_user_path(@user) %></h4>
                             <small>Following</small>
                         </div>
                         <div class="col">
-                            <h4><%= link_to 0, '#' %></h4>
+                            <h4><%= link_to @user.passive_relationships.count, followers_user_path(@user) %></h4>
                             <small>Follower</small>
                         </div>
-                        <div class="col">
-                            <h4><%= link_to 0, '#' %></h4>
-                            <small>Lessons</small>
-                        </div>
                     </div>
+                        <% if current_user != @user %>
+                            <% if current_user.relationship(@user)%>
+                                <%= button_to "Unfollow", relationship_path(current_user.relationship(@user)), method: :delete, class: "btn btn-danger btn-block mt-2" %>
+                            <% else %>
+                                <%= button_to "Follow", relationships_path, method: :post, params: { followed_id: @user.id }, class: "btn btn-primary btn-block mt-2" %>
+                            <% end %>
+                        <% end %>
                 </div>
             </div>
         </div>

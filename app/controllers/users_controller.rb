@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.where.not(id: current_user.id)
+    @users = User.where.not(id: current_user.id).paginate(page: params[:page], per_page: 12)
   end
 
   def show
@@ -33,6 +33,18 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def following
+    @user = User.find(params[:id])
+    ids = @user.active_relationships.pluck(:followed_id)
+    @users = User.where(id: ids).paginate(page: params[:page], per_page: 12)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    ids = @user.passive_relationships.pluck(:follower_id)
+    @users = User.where(id: ids).paginate(page: params[:page], per_page: 12)
   end
 
   private

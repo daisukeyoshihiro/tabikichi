@@ -1,18 +1,27 @@
 <h1 class="text-center">Users</h1><hr>
 <div class="container">
+    <div class="pagination justify-content-center m-3"><%= will_paginate %></div>
     <div class="row">
-        <%#= will_paginate %>
         <% @users.each do |user| %>
             <div class="card m-3 text-center" style="width: 15rem;">
-                <div><%= image_tag user.picture.to_s, size: 120 %></div>
+                <%= image_tag user.picture.to_s, size: 150, class: "card-img-top" %>
                 <div class="card-body">
                     <h5 class="card-title "><%= link_to user.name, user %></h5>
                     <p class="card-text"><%= user.email %></p>
+                </div>
+                <div class="card-footer">
+                    <% if current_user != @user %>
+                        <% if current_user.relationship(user)%>
+                            <%= button_to "Unfollow", relationship_path(current_user.relationship(user)), method: :delete, class: "btn btn-danger btn-block mb-2" %>
+                        <% else %>
+                            <%= button_to "Follow", relationships_path, method: :post, params: { followed_id: user.id }, class: "btn btn-primary btn-block mb-2"%>
+                        <% end %>
+                    <% end %>
                     <% if current_user.admin == true %>
                         <% if user.admin == false %>
-                            <%= button_to "Set admin", admin_user_path(user),method: :patch, class: 'btn btn-primary btn-block' %>
+                            <%= button_to "Set admin", admin_user_path(user),method: :patch, class: 'btn btn-success btn-block' %>
                         <% else %>
-                            <%= button_to "Remove admin", admin_user_path(user),method: :delete, class: "btn btn-danger btn-block" %>
+                            <%= button_to "Remove admin", admin_user_path(user),method: :delete, class: "btn btn-warning btn-block" %>
                         <% end %>
                     <% end %>
                 </div>
