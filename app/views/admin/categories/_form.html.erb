@@ -1,6 +1,7 @@
 <div class="container">
     <div class="col-6 mx-auto">
         <%= form_for [:admin, @category] do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
             <div class="form-group">
                 <%= f.label :title %> <br>
                 <%= f.text_field :title, class: "form-control" %>
