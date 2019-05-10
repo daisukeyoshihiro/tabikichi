@@ -1,0 +1,32 @@
+<div class="card container">
+    <div class="card-header row">
+        <div class="col-6">
+            Categories
+        </div>
+        <div class="col-6 text-right">
+            <%= link_to 'Add category', new_admin_category_path, class: 'btn btn-success text-right' %>
+        </div>
+    </div>
+    <table class="table">
+        <tbody>
+            <tr class="row">
+                <th class="col-3">Title</th>
+                <th class="col-5">Description</th>
+                <th class="col-1 text-center">Words</th>
+                <th class="col-3">Action</th>
+            </tr>
+            <tr class="row">
+                <% @categories.each do |category| %>
+                    <td class="col-3"><%= category.title %></td>
+                    <td class="col-5"><%= category.description %></td>
+                    <td class="col-1 text-center"><%= "0" %></td>
+                    <td class="col-3">
+                        <%= link_to 'Add word', '#', class: 'btn btn-primary' %>
+                        <%= link_to 'Edit', edit_admin_category_path(category), class: 'btn btn-warning' %>
+                        <%= link_to 'Remove', admin_category_path(category), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete?"} %>
+                    </td>
+                <% end %>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -3,11 +3,7 @@ class RelationshipsController < ApplicationController
     other_user = User.find(params[:followed_id])
     current_user.follow(other_user)
     
-    unless request.path_info == users_url
-      redirect_to users_url
-    else
-      redirect_to other_user
-    end
+    redirect_to request.referer
   end
 
   def destroy
@@ -15,11 +11,7 @@ class RelationshipsController < ApplicationController
     other_user = User.find(relationship.followed_id)
     relationship.destroy
    
-    unless request.path_info == users_url
-      redirect_to users_url
-    else
-      redirect_to other_user
-    end
+    redirect_to request.referer
   end
     
 end
