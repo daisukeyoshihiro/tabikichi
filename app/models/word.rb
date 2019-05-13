@@ -2,7 +2,7 @@ class Word < ApplicationRecord
   belongs_to :category
   has_many :choices, dependent: :destroy
   accepts_nested_attributes_for :choices
-  validates :content, presence: true
+  validates :content, presence: true, uniqueness: true, length:{ maximum: 15}
   validate :validate_only_one_correct
 
   private
