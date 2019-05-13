@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card-header row">
+        <div class="col-6">
+            Admin｜New Category - Words
+        </div>
+        <div class="col-6 text-right">
+            <%= link_to 'Add word', new_admin_category_word_path(@category), class: 'btn btn-success text-right' %>
+            <%= link_to 'Back', admin_categories_path, class: 'btn btn-outline-dark'%>
+        </div>
+    </div>
+    <div class="card-body">
+        <h2>New Category</h2>
+        <p>This is a test category</p>
+        <table class="table">
+            <tr class="row">
+                <th class="col-4">words</th>
+                <th class="col-4">Answer</th>
+                <th class="col-4">Action</th>
+            </tr>
+            <tr class="row">
+                <% @words.each do |word| %>
+                    <td class="col-4"><%= word.content %></td>
+                    <td class="col-4"><%= '#' %>
+                    <td class="col-4">
+                        <%= link_to 'Edit', edit_admin_category_word_path(@category, word), class: 'btn btn-warning' %>
+                        <%= link_to 'Remove', admin_category_word_path(@category,word),method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete?"} %>
+                    </td>
+
+                <% end %>
+            </tr>
+        </table>
+    </div>
+</div>
