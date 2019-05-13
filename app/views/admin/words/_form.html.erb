@@ -9,7 +9,7 @@
     </div>
     <div class="card-body">
         <%= form_with model: [:admin,:category, @word],local: true do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+            <%= render 'shared/error_messages', object: f.object %>
             <div class="form-group col-5 mx-auto">
                 <%= f.label :word %>
                 <%= f.text_field :content %>
@@ -24,9 +24,9 @@
                     </div>
                 <% end %>
             </div>
-        <div class="text-center">
-        <%= f.submit btn_msg, class: 'btn btn-primary col-5'%>
-        </div>
+            <div class="text-center">
+                <%= f.submit btn_msg, class: 'btn btn-primary col-5'%>
+            </div>
         <% end %>
     </div>
 </div>
