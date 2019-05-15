@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <h1 class="text-center mt-3 col-4"><%= @lesson.category.title%></h1>
+    </div>
+    <div class="card pd-3">
+        <div class="text-center">
+            <h2 class="text-warning mt-3"><%= @words.first.content %></h2>
+        </div>
+        <% @words.first.choices.each do |choice| %>
+            <%= link_to choice.content, lesson_answers_path(@lesson, params: {answer: {word_id: @words.first.id, choice_id: choice.id}}), method: :post, class: 'btn btn-outline-primary btn-block mt-3' %>
+        <% end %>
+    </div>
+</div>

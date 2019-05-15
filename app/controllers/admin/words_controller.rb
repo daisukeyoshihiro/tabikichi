@@ -1,4 +1,6 @@
 class Admin::WordsController < ApplicationController
+  before_action :require_admin
+  
   def new
     @category = Category.find(params[:category_id])
     @word = @category.words.build
@@ -47,5 +49,9 @@ class Admin::WordsController < ApplicationController
 
   def word_params
     params.require(:word).permit(:content, choices_attributes: [:id, :content, :correct_answer])
+  end
+
+  def require_admin
+    redirect_to root_url unless current_user.admin?
   end
 end

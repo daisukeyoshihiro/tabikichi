@@ -15,7 +15,7 @@ User.create!(
 
 50.times do |n|
   User.create!(
-    name: Faker::Name.name,
+    name: Faker::TvShows::GameOfThrones.character,
     email: Faker::Internet.unique.email,
     password: "password",
     admin: false
