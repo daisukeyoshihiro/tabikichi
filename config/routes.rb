@@ -5,6 +5,10 @@ Rails.application.routes.draw do
       resources :words
     end
   end
+
+  resources :lessons do
+    resources :answers, only: [:new, :create]
+  end
   
   root 'staticpages#home'
   resources :users do

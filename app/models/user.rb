@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum:6 },
     allow_nil: true
   mount_uploader :picture, PictureUploader
+  has_many :lessons
 
   def follow(other_user)
     Relationship.create(
