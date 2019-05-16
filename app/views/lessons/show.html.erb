@@ -11,8 +11,8 @@
                 <tr>
                     <td><%= a.word.content %></td>
                     <td><%= a.choice.content %></td>
-                    <td><%= a.choice.word.choices.where(correct_answer: true).first.content %></td>
-                    <td><% if a.choice.content == a.choice.word.choices.where(correct_answer: true).first.content %>
+                    <td><%= a.choice.word.choices.find_by(correct_answer: true).content %></td>
+                    <td><% if a.choice.content == a.choice.word.choices.find_by(correct_answer: true).content %>
                             <i class="far fa-circle"></i>
                         <% else %>
                             <i class="fas fa-times"></i>
