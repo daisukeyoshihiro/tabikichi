@@ -3,7 +3,7 @@
         <div class="col-4" style="width: 18rem;">
             <div class="card">
                 <div class="card-body text-center">
-                    <%= image_tag @user.picture.to_s, class: "card-img-top" %>
+                    <%= image_tag @user.picture.to_s, size: 120 %>
                     <h3 class="card-title text-center"><%= @user.name %></h3>
                     <p class="card-text text-center"><%= @user.email %></p> <hr>
                     <div class="row">
