@@ -1,9 +1,8 @@
 <div class="container py-5">
     <h1>Categories(<%= @categories.count %>)</h1>
-    <% @categories.each do |category| %>
-    <div class="row">
-        <div class="col-5">
-            <div class="card p-2 mt-2">
+    <div class="row pull-center">
+        <% @categories.each do |category| %>
+            <div class="card p-2 m-2 col-5">
                 <div class="card-body">
                     <h4><%= category.title %></h4>
                     <strong>[<%= category.words.count %> words]</strong><%= category.description %></p>
@@ -15,7 +14,7 @@
                     <%= link_to 'Learn', lessons_path(category_id: category.id), method: :post, class: 'btn btn-primary btn-block mt-5'%>
                 <% end %>
             </div>
-        </div>
+        <% end %>
     </div>
-    <% end %>
+
 </div>

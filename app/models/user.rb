@@ -6,6 +6,7 @@ class User < ApplicationRecord
     allow_nil: true
   mount_uploader :picture, PictureUploader
   has_many :lessons
+  has_many :answers, through: :lessons
 
   def follow(other_user)
     Relationship.create(
