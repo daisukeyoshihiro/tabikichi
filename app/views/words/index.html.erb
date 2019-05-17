@@ -1,5 +1,5 @@
 <div class="container py-5">
-	<div class="row">
+    <div class="row">
         <div class="col-sm-4">
             <div class="card pb-3">
                 <div class="card-body text-center">
@@ -10,42 +10,43 @@
                     <%= link_to 'Update profile', edit_user_path(current_user), class: 'btn btn-sm btn-info mt-2'%>
                 </div>
             </div>
-		</div>
-		<div class="col-sm-8">
-			<div class="card">
-				<div class="card-header row">
-					<div class="col-6">
-						Words learned
-					</div>
-					<div class="col-6 text-right">
-						<%= link_to 'back to dashbord', '/dashbord', class: 'text-right'%>
-					</div>
-				</div>
-				<table class="table table-striped">
-					<thead>
-					<tr>
-						<th scope="col-3">Word</th>
-						<th scope="col-3">Your answer</th>
-						<th scope="col-3">Correct answer</th>
-					</tr>
-					</thead>
-					<tbody>
-						<% current_user.answers.each do |a| %>
-							<tr>
-								<td><%= a.word.content %></td>
-								<td><%= a.choice.content %></td>
-								<td><%= a.choice.word.choices.find_by(correct_answer: true).content %></td>
-                    			<td><% if a.choice.content == a.choice.word.choices.find_by(correct_answer: true).content %>
-                            			<i class="far fa-circle"></i>
-                        			<% else %>
-                            			<i class="fas fa-times"></i>
-                       				<% end %>
-                   				</td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+        </div>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header row">
+                    <div class="col-6">
+                        Words learned
+                    </div>
+                    <div class="col-6 text-right">
+                        <%= link_to 'back to dashbord', '/dashbord', class: 'text-right'%>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col-3">Word</th>
+                        <th scope="col-3">Your answer</th>
+                        <th scope="col-3">Correct answer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% current_user.answers.each do |a| %>
+                            <tr>
+                                <td><%= a.word.content %></td>
+                                <td><%= a.choice.content %></td>
+                                <td><%= a.choice.word.choices.find_by(correct_answer: true).content %></td>
+                                <td>
+                                    <% if a.choice.content == a.choice.word.choices.find_by(correct_answer: true).content %>
+                                        <i class="far fa-circle"></i>
+                                    <% else %>
+                                        <i class="fas fa-times"></i>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
