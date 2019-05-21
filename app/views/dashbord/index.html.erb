@@ -21,11 +21,26 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <div class="card">
-                <div class="card-header">
-                    ACTIVITY FEED
+            <h2 class="text-center">ACTIVITY FEED</h2><hr>
+                <% @activities.each do |activity|%>
+                    <div class="media mb-4">
+                        <div class="avatar">
+                            <%= image_tag activity.user.picture.to_s, size: 75 %>
+                        </div>
+                        <div class="media-body">
+                            <% if activity.action.instance_of?(Relationship)%>
+                                <strong><%= link_to 'You', current_user, class: 'text-muted' if current_user == activity.user %><%= link_to activity.user.name, activity.user, class: 'text-muted' if activity.user != current_user %></strong> followed <span class="badge badge-primary"><%= link_to activity.action.followed.name, '#', class: 'text-white'%></span><br>
+                                <small class="text-muted"><%= time_ago_in_words(activity.created_at)+" ago" %></small>
+                            <% else %>
+                                <strong><%= link_to 'You', current_user, class: 'text-muted' if current_user == activity.user %><%= link_to activity.user.name, activity.user, class: 'text-muted' if activity.user != current_user%></strong> Learned <span class="badge badge-secondary"><%= link_to activity.action.category.title, lesson_path(activity.action.id), class: "text-white" %></span><br>
+                                <small class="text-muted"><%= time_ago_in_words(activity.created_at)+" ago" %></small>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+                <div class="pagination justify-content-center">
+                    <%= will_paginate @activities %>
                 </div>
-            </div>
         </div>
     </div>
 </div>
