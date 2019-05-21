@@ -4,7 +4,9 @@ class LessonsController < ApplicationController
 
     lesson = category.lessons.build(user: current_user)
     lesson.save
+    lesson.create_activity(user: current_user)
     redirect_to new_lesson_answer_path(lesson)
+
   end
 
   def show

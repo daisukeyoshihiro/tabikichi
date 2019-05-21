@@ -28,7 +28,26 @@
         </div>
         
         <div class="col-8">
-        <h2 class="text-center">Lessons<hr></h2>
+            <h2 class="text-center">Activities<hr></h2>
+            <% @activities.each do |activity| %>
+                <div class="media mb-4">
+                    <div class="avatar">
+                        <%= image_tag @user.picture.to_s, size: 75 %>
+                    </div>
+                    <div class="media-body">
+                        <% if activity.action.instance_of?(Relationship) %>
+                            <strong><%= link_to "You", current_user, class: 'text-muted' if current_user == @user %> <%= link_to @user.name, @user, class: 'text-muted' if current_user != @user%></strong> followed <span class="badge badge-primary"><%= link_to activity.action.followed.name, user_path(activity.action.followed),class: "text-white" %></span><br>
+                            <small class="text-muted"><%= time_ago_in_words(activity.created_at)+" ago" %></small>                        
+                        <% else %>
+                            <strong><%= link_to "You", current_user, class: 'text-muted' if current_user == @user %> <%= link_to @user.name, @user, class: 'text-muted' if current_user != @user%></strong> Learned <%= activity.action.result%> of <%= activity.action.category.words.count%> in <span class="badge badge-secondary"><%= link_to activity.action.category.title, lesson_path(activity.action.id), class: "text-white" %></span><br>
+                            <small class="text-muted"><%= time_ago_in_words(activity.created_at)+" ago" %></small>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+            <div class="pagination justify-content-center">
+                <%= will_paginate @activities %>
+            </div>
         </div>
     </div>
 </div>
