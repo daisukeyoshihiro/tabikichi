@@ -39,7 +39,7 @@
                             <strong><%= link_to "You", current_user, class: 'text-muted' if current_user == @user %> <%= link_to @user.name, @user, class: 'text-muted' if current_user != @user%></strong> followed <span class="badge badge-primary"><%= link_to activity.action.followed.name, user_path(activity.action.followed),class: "text-white" %></span><br>
                             <small class="text-muted"><%= time_ago_in_words(activity.created_at)+" ago" %></small>                        
                         <% else %>
-                            <strong><%= link_to "You", current_user, class: 'text-muted' if current_user == @user %> <%= link_to @user.name, @user, class: 'text-muted' if current_user != @user%></strong> Learned <span class="badge badge-secondary"><%= link_to activity.action.category.title, lesson_path(activity.action.id), class: "text-white" %></span><br>
+                            <strong><%= link_to "You", current_user, class: 'text-muted' if current_user == @user %> <%= link_to @user.name, @user, class: 'text-muted' if current_user != @user%></strong> Learned <%= activity.action.result%> of <%= activity.action.category.words.count%> in <span class="badge badge-secondary"><%= link_to activity.action.category.title, lesson_path(activity.action.id), class: "text-white" %></span><br>
                             <small class="text-muted"><%= time_ago_in_words(activity.created_at)+" ago" %></small>
                         <% end %>
                     </div>
