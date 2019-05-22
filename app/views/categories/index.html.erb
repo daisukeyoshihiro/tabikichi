@@ -1,4 +1,15 @@
 <div class="container py-5">
+<ul class="nav nav-pills float-right">
+  <li class="nav-item">
+    <%= link_to 'All', categories_path, class: "nav-link #{current_page?(nil)}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Learned', categories_path(status: 'learned'), class: "nav-link #{current_page?('learned')}"%>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Not learned', categories_path(status: 'notlearned'), class: "nav-link #{current_page?('notlearned')}"%>
+  </li>
+</ul>
     <h1>Categories(<%= @categories.count %>)</h1>
     <div class="row pull-center">
         <% @categories.each do |category| %>
