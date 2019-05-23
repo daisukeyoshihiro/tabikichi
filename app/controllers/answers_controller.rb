@@ -5,6 +5,7 @@ class AnswersController < ApplicationController
     if rest_of_word.first.nil?
       redirect_to lesson_url(@lesson)
       @lesson.update_attribute(:result, @lesson.choices.where(correct_answer: true).count)
+      @lesson.create_activity(user: current_user)
     end
   end
 
