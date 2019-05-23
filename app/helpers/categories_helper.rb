@@ -1,7 +1,7 @@
 module CategoriesHelper
 	def current_page?(status)
 		if params[:status] == status
-				return "active"
+			return "active"
 		end
 	end
 end
