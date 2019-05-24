@@ -1,6 +1,6 @@
 class WordsController < ApplicationController
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories.left_outer_joins(:lessons).merge(Lesson.where.not(result: nil))
     if params[:category] == nil
       @answers = current_user.answers.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
       @title = 'All learned'
