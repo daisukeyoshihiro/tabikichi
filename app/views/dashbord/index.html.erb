@@ -16,7 +16,7 @@
             </div>
             <div class="card text-center mt-5">
                 <%= link_to '/words', class: 'btn btn-lg btn-info m-2' do %>
-                <%=current_user.answers.count%><br>words learned
+                <%= pluralize(current_user.answers.count, "Word")%> learned
                 <% end %>
             </div>
         </div>

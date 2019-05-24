@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :lessons
   has_many :answers, through: :lessons
   has_many :activities
+  has_many :categories, through: :lessons
 
   def follow(other_user)
     Relationship.create(
