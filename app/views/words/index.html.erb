@@ -21,6 +21,21 @@
                         <%= link_to 'back to dashbord', '/dashbord', class: 'text-right'%>
                     </div>
                 </div>
+                <div class="dropdown col">
+                    Category 
+                    <button class="btn btn-light dropdown-toggle m-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= @title %>
+                    </button>
+                    <div class="d-inline-block ml-5">
+                        <%= will_paginate @answers %>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <%= link_to 'All learned', words_path, class: 'dropdown-item' %>
+                        <% @categories.each do |category|%>
+                            <%= link_to category.title, words_path(category: category.id), class: 'dropdown-item' %>
+                        <% end %>
+                    </div>
+                </div>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -30,7 +45,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <% current_user.answers.each do |a| %>
+                        <% @answers.each do |a| %>
                             <tr>
                                 <td><%= a.word.content %></td>
                                 <td><%= a.choice.content %></td>

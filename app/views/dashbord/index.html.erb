@@ -22,7 +22,7 @@
         </div>
         <div class="col-sm-8">
             <h2 class="text-center">ACTIVITY FEED</h2><hr>
-                <% @activities.each do |activity|%>
+                <% @activities.each do |activity| %>
                     <div class="media mb-4">
                         <div class="avatar">
                             <%= image_tag activity.user.picture.to_s, size: 75 %>
